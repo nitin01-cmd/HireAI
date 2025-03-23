@@ -8,12 +8,11 @@ from nltk.stem import WordNetLemmatizer
 def download_nltk_resources():
     """Download required NLTK resources if not already present."""
     try:
-        resources = ['punkt', 'stopwords', 'wordnet']
-        for resource in resources:
-            try:
-                nltk.data.find(f'tokenizers/{resource}')
-            except LookupError:
-                nltk.download(resource, quiet=True)
+        # Download essential resources directly, without checking first
+        nltk.download('punkt', quiet=True)
+        nltk.download('stopwords', quiet=True)
+        nltk.download('wordnet', quiet=True)
+        print("Successfully downloaded NLTK resources")
     except Exception as e:
         print(f"Error downloading NLTK resources: {str(e)}")
 
